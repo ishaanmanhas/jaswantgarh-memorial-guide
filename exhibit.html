@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0e0b" />
+  <title>Exhibit | Jaswantgarh Memorial Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="exhibit-hero" class="hero hero-detail">
+    <nav class="nav wrap">
+      <a class="brand" href="index.html">
+        <span class="shield">◊</span>
+        <span class="brand-text">JASWANTGARH</span>
+      </a>
+      <div class="language-switch">
+        <button class="lang-btn active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="hi" type="button">हिं</button>
+      </div>
+    </nav>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content detail-hero-content wrap">
+      <a class="back-link" href="index.html">← <span data-i18n="backGuide">Memorial Guide</span></a>
+      <p id="detail-eyebrow" class="eyebrow"></p>
+      <h1 id="detail-title"></h1>
+      <p id="detail-summary" class="hero-copy"></p>
+
+      <div class="audio-box">
+        <button id="audio-toggle" class="audio-btn" type="button">
+          <span id="audio-icon">▶</span>
+          <span id="audio-label" data-i18n="listenStory">Listen to Story</span>
+        </button>
+        <button id="show-qr" class="outline-btn qr-section-btn" type="button">▦ <span data-i18n="showQr">Show QR Code</span></button>
+        <span id="audio-status" class="audio-status"></span>
+      </div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </header>
+
+  <main class="detail-main wrap">
+    <section class="detail-layout">
+      <article class="story-panel">
+        <p class="eyebrow" data-i18n="historicalAccount">HISTORICAL ACCOUNT</p>
+        <h2 id="story-heading"></h2>
+        <div id="story-body" class="prose"></div>
+      </article>
+
+      <aside class="quick-panel">
+        <p class="eyebrow" data-i18n="visitorQuick">VISITOR GUIDE</p>
+        <div class="quick-list">
+          <div>
+            <span data-i18n="locationLabel">Location</span>
+            <strong id="location-value"></strong>
+          </div>
+          <div>
+            <span data-i18n="recommendedTime">Suggested time</span>
+            <strong id="time-value"></strong>
+          </div>
+          <div>
+            <span data-i18n="contentAvailable">Available</span>
+            <strong id="available-value"></strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+<section id="honour-section" class="media-section" hidden>
+  <div class="section-heading">
+    <p id="honour-kicker" class="eyebrow"></p>
+    <h2 id="honour-heading"></h2>
+  </div>
+
+  <label id="honour-search-label" for="honour-search"></label>
+  <input
+    id="honour-search"
+    type="search"
+    autocomplete="off"
+  >
+
+  <p id="honour-count" aria-live="polite"></p>
+
+  <div
+    class="honour-table-wrap"
+    tabindex="0"
+    role="region"
+    aria-labelledby="honour-heading"
+  >
+    <table class="honour-table">
+      <thead>
+        <tr>
+          <th id="honour-col-number" scope="col"></th>
+          <th id="honour-col-army" scope="col"></th>
+          <th id="honour-col-rank" scope="col"></th>
+          <th id="honour-col-name" scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="honour-rows"></tbody>
+    </table>
+  </div>
+</section>
+    <section class="media-section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="mediaKicker">VISUAL ARCHIVE</p>
+        <h2 data-i18n="galleryHeading">Gallery & Media</h2>
+      </div>
+      <div id="gallery" class="gallery-grid"></div>
+    </section>
+<section id="gallantry-section" class="media-section" hidden>
+  <div class="section-heading">
+    <p id="gallantry-kicker" class="eyebrow"></p>
+    <h2 id="gallantry-heading"></h2>
+    <p id="gallantry-note"></p>
+  </div>
+
+  <div id="gallantry-list"></div>
+</section>
+    <section id="video-section" class="media-section">
+      <div class="section-heading">
+        <p class="eyebrow">VIDEO</p>
+        <h2 data-i18n="videoHeading">Watch the Story</h2>
+      </div>
+      <div id="video-box" class="video-box"></div>
+    </section>
+
+    <section id="map-section" class="media-section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="mapKicker">MAP / REFERENCE</p>
+        <h2 data-i18n="mapHeading">Understand the Location</h2>
+      </div>
+      <div id="map-box" class="map-box"></div>
+    </section>
+
+    <section class="next-section">
+      <a id="prev-link" class="next-card" href="#"></a>
+      <a id="next-link" class="next-card next-card-right" href="#"></a>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close">×</button>
+    <img id="lightbox-image" alt="" />
+    <p id="lightbox-caption"></p>
+  </div>
+
+
+  <div id="qr-modal" class="qr-modal" hidden>
+    <div class="qr-modal-card">
+      <button id="qr-close" class="lightbox-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">MEMORIAL QR</p>
+      <h2 id="qr-modal-title"></h2>
+      <p id="qr-modal-help" class="muted-copy"></p>
+      <div id="section-qr" class="qr-code-box qr-code-large"></div>
+      <p class="qr-scan-line">SCAN TO EXPLORE · स्कैन कर जानकारी देखें</p>
+      <p id="qr-modal-url" class="qr-destination"></p>
+      <div id="qr-modal-warning" class="qr-warning" hidden>
+        <strong>Test address detected.</strong>
+        Do not print this QR until the website is on its final domain.
+      </div>
+      <button id="qr-print" class="audio-btn" type="button">Print QR</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="brand footer-brand"><span class="shield">◊</span><span>JASWANTGARH</span></div>
+        <p data-i18n="footerText">A bilingual digital memorial guide designed for visitors at Jaswantgarh.</p>
+      </div>
+      <p class="footer-note">© <span id="year"></span> Jaswantgarh Memorial Guide</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="exhibit.js"></script>
+</body>
+</html>
